@@ -1,15 +1,24 @@
+/* ----------- Base Styles ----------- */
 body {
-  background-color: #b2cbe1;
-  font-family: Arial, sans-serif;
+  margin: 0;
+  font-family: 'Courier New', monospace;
   text-align: center;
-  padding: 40px;
+  padding: 100px 20px;
+  background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite, tilt 10s infinite linear;
+  overflow-x: hidden;
+  transition: background-color 0.5s ease;
+  cursor: pointer;
 }
 
 h1 {
-  color: #8549df;
+  font-size: 2.5em;
+  color: white;
+  margin-bottom: 20px;
 }
 
-
+/* ----------- Buttons ----------- */
 button, a {
   padding: 10px 20px;
   font-size: 16px;
@@ -22,32 +31,45 @@ button, a {
   margin-top: 20px;
 }
 
-body {
-  font-family: sans-serif;
-  text-align: center;
-  padding: 50px;
-  transition: background-color 0.5s ease;
-  cursor: pointer;
+/* ----------- Animations ----------- */
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-body {
-  margin: 0;
-  font-family: 'Courier New', monospace;
-  text-align: center;
-  padding: 100px 20px;
-  animation: tilt 10s infinite linear;
-  background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-  overflow-x: hidden;
+@keyframes tilt {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(1deg); }
 }
 
-h1 {
-  font-size: 2.5em;
-  color: white;
-  margin-bottom: 20px;
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(1deg); }
+  75% { transform: rotate(-1deg); }
 }
 
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+}
+
+/* ----------- Effects & Classes ----------- */
 .glow {
   text-shadow: 0 0 10px #fff, 0 0 20px #ff40ff, 0 0 30px #ff40ff;
 }
@@ -64,11 +86,12 @@ h1 {
   animation: typing 4s steps(30, end) forwards, blink 0.8s step-end infinite;
 }
 
+/* ----------- Glitch Joke Box ----------- */
 .glitch {
   position: relative;
   font-size: 1.2em;
-  color: #222; /* darker text */
-  background-color: rgba(255, 255, 255, 0.6); /* soft background box */
+  color: #222;
+  background-color: rgba(255, 255, 255, 0.6);
   padding: 10px;
   border-radius: 8px;
   display: inline-block;
@@ -77,49 +100,23 @@ h1 {
   border: 1px solid rgba(0,0,0,0.3);
 }
 
-box-shadow: 0 0 8px rgba(0,0,0,0.2);
-border: 1px solid rgba(0,0,0,0.3);
-
-.glitch::before, .glitch::after {
+.glitch::before,
+.glitch::after {
   content: attr(data-text);
   position: absolute;
   left: 0;
   width: 100%;
   overflow: hidden;
 }
+
 .glitch::before {
   animation: glitchTop 2s infinite linear alternate-reverse;
   color: #f0f;
 }
+
 .glitch::after {
   animation: glitchBot 2s infinite linear alternate-reverse;
   color: #0ff;
-}
-
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-@keyframes blink {
-  50% { border-color: transparent; }
-}
-
-@keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes wiggle {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(1deg); }
-  75% { transform: rotate(-1deg); }
-}
-
-@keyframes tilt {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(1deg); }
 }
 
 @keyframes glitchTop {
@@ -132,6 +129,7 @@ border: 1px solid rgba(0,0,0,0.3);
   100% { clip-path: inset(0 0 20% 0); }
 }
 
+/* ----------- Floating Emojis ----------- */
 .emoji-container {
   position: fixed;
   top: 0;
@@ -140,8 +138,10 @@ border: 1px solid rgba(0,0,0,0.3);
   height: 100%;
   pointer-events: none;
   font-size: 2rem;
+  z-index: 10;
 }
 
+/* ----------- Hacker Mode ----------- */
 body.hacker-mode {
   background: #000;
   color: #00ff00;
@@ -165,6 +165,7 @@ body.hacker-mode .glitch {
   100% { transform: translate(1px, 1px); }
 }
 
+/* ----------- FBI Warning ----------- */
 .fbi-warning {
   position: fixed;
   top: 0;
@@ -187,6 +188,7 @@ body.hacker-mode .glitch {
   max-width: 600px;
 }
 
+/* ----------- Hidden Class ----------- */
 .hidden {
   display: none;
 }
