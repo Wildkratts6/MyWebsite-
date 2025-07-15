@@ -66,9 +66,20 @@ h1 {
 
 .glitch {
   position: relative;
-  color: #fff;
   font-size: 1.2em;
+  color: #222; /* darker text */
+  background-color: rgba(255, 255, 255, 0.6); /* soft background box */
+  padding: 10px;
+  border-radius: 8px;
+  display: inline-block;
+  margin-top: 20px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  border: 1px solid rgba(0,0,0,0.3);
 }
+
+box-shadow: 0 0 8px rgba(0,0,0,0.2);
+border: 1px solid rgba(0,0,0,0.3);
+
 .glitch::before, .glitch::after {
   content: attr(data-text);
   position: absolute;
@@ -129,4 +140,53 @@ h1 {
   height: 100%;
   pointer-events: none;
   font-size: 2rem;
+}
+
+body.hacker-mode {
+  background: #000;
+  color: #00ff00;
+  font-family: monospace;
+  transition: 0.3s all ease;
+}
+
+body.hacker-mode h1,
+body.hacker-mode p,
+body.hacker-mode .glitch {
+  color: #00ff00;
+  text-shadow: 0 0 5px #00ff00;
+  animation: glitchyText 0.3s infinite;
+}
+
+@keyframes glitchyText {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-1px, 1px); }
+  50% { transform: translate(1px, -1px); }
+  75% { transform: translate(-1px, -1px); }
+  100% { transform: translate(1px, 1px); }
+}
+
+.fbi-warning {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-family: monospace;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  z-index: 9999;
+}
+
+.fbi-warning-content {
+  max-width: 600px;
+}
+
+.hidden {
+  display: none;
 }
