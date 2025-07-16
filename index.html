@@ -66,7 +66,7 @@
 
   <p>This website was made by me with code! 😊<br>Hooray! I am very proud!</p>
 
-  <button onclick="goToNextPage()">Mysterious button</button>
+  <button id="mysteryBtn">Mysterious button</button>
   <p>Click if you dare.......</p>
 
   <p id="joke-box" class="glitch">Loading a joke...</p>
@@ -86,11 +86,15 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script>
+    // Make goToNextPage global or add event listener here
+    function goToNextPage() {
+      window.location.href = "page2.html";
+    }
+
     document.addEventListener("DOMContentLoaded", () => {
-      // Page link
-      function goToNextPage() {
-        window.location.href = "page2.html";
-      }
+      // Attach click event to button
+      const btn = document.getElementById("mysteryBtn");
+      btn.addEventListener("click", goToNextPage);
 
       // Click background color
       document.body.addEventListener("click", () => {
