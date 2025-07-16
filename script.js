@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     mysteryBtn.addEventListener("click", pressMe);
   }
 
-  // Background color change (but ignore button clicks)
+  // Background color change (ignore button clicks)
   document.body.addEventListener("click", (event) => {
     if (event.target === mysteryBtn) return;
     const colors = ["lightblue", "lightgreen", "lavender", "lightpink", "peachpuff", "lightyellow"];
@@ -32,44 +32,9 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => emoji.remove(), 4000);
   }, 500);
 
-  // Confetti
+  // Confetti bursts
   setInterval(() => {
     confetti({
       particleCount: 100,
       spread: 100,
       origin: { y: 0.6 }
-    });
-  }, 5000);
-
-  // Joke generator
-  const jokes = [
-    "Why don't programmers like nature? It has too many bugs.",
-    "Why do Java developers wear glasses? Because they don't C#.",
-    "I would tell you a UDP joke, but you might not get it.",
-    "404 joke not found.",
-    "To understand recursion, you must first understand recursion."
-  ];
-  function showJoke() {
-    const box = document.getElementById("joke-box");
-    const joke = jokes[Math.floor(Math.random() * jokes.length)];
-    box.textContent = joke;
-    box.setAttribute("data-text", joke);
-  }
-  setInterval(showJoke, 4000);
-  showJoke();
-
-  // Hacker mode toggle with "h"
-  document.addEventListener("keydown", (e) => {
-    if (e.key.toLowerCase() === "h") {
-      document.body.classList.toggle("hacker-mode");
-    }
-  });
-
-  // FBI warning toggle with "f"
-  document.addEventListener("keydown", (e) => {
-    if (e.key.toLowerCase() === "f") {
-      const warning = document.getElementById("fbiWarning");
-      warning.classList.toggle("hidden");
-    }
-  });
-});
