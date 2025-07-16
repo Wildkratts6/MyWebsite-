@@ -1,11 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Button alert
+  // Button alert function
   function pressMe() {
     alert("You pressed the button! Great job!");
   }
 
-  // Random background color on click
-  document.body.addEventListener("click", () => {
+  // Attach pressMe to your mysterious button (assuming it has id="mysteryBtn")
+  const mysteryBtn = document.getElementById("mysteryBtn");
+  if (mysteryBtn) {
+    mysteryBtn.addEventListener("click", pressMe);
+  }
+
+  // Random background color on body click, but ignore clicks on the button to avoid conflict
+  document.body.addEventListener("click", (event) => {
+    if (event.target === mysteryBtn) return; // skip if button clicked
     const colors = ["lightblue", "lightgreen", "lavender", "lightpink", "peachpuff", "lightyellow"];
     const randomColor = colors[Math.floor(Math.random() * colors.length)];
     document.body.style.backgroundColor = randomColor;
@@ -27,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => emoji.remove(), 4000);
   }, 500);
 
-  // Confetti (requires confetti.js)
+  // Confetti (make sure confetti lib is loaded)
   setInterval(() => {
     confetti({
       particleCount: 100,
@@ -53,15 +60,15 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(showJoke, 4000);
   showJoke();
 
-  // Hacker mode toggle with "h"
-  document.addEventListener("keydown", function (e) {
+  // Toggle hacker mode with "h"
+  document.addEventListener("keydown", (e) => {
     if (e.key.toLowerCase() === "h") {
       document.body.classList.toggle("hacker-mode");
     }
   });
 
-  // FBI warning toggle with "f"
-  document.addEventListener("keydown", function (e) {
+  // Toggle FBI warning with "f"
+  document.addEventListener("keydown", (e) => {
     if (e.key.toLowerCase() === "f") {
       const warning = document.getElementById("fbiWarning");
       warning.classList.toggle("hidden");
