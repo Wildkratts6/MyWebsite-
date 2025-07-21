@@ -1,14 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Button alert
-  function pressMe() {
-    alert("You pressed the button! Great job!");
-  }
   const mysteryBtn = document.getElementById("mysteryBtn");
   if (mysteryBtn) {
-    mysteryBtn.addEventListener("click", pressMe);
+    mysteryBtn.addEventListener("click", () => {
+      alert("You pressed the button! Great job!");
+    });
   }
 
-  // Background color change (ignore button clicks)
+  // Background color change (when clicking the background only)
   document.body.addEventListener("click", (event) => {
     if (event.target === mysteryBtn) return;
     const colors = ["lightblue", "lightgreen", "lavender", "lightpink", "peachpuff", "lightyellow"];
@@ -27,14 +26,32 @@ document.addEventListener("DOMContentLoaded", () => {
     emoji.style.top = `${Math.random() * 100}%`;
     emoji.style.opacity = 0.7;
     emoji.style.fontSize = "24px";
-    emoji.style.animation = `floatUp 4s ease-out forwards`;
     emojiContainer.appendChild(emoji);
     setTimeout(() => emoji.remove(), 4000);
   }, 500);
 
-  // Confetti bursts
+  // Confetti
   setInterval(() => {
     confetti({
       particleCount: 100,
       spread: 100,
       origin: { y: 0.6 }
+    });
+  }, 5000);
+
+  // Joke generator
+  const jokes = [
+    "Why don't programmers like nature? It has too many bugs.",
+    "Why do Java developers wear glasses? Because they don't C#.",
+    "I would tell you a UDP joke, but you might not get it.",
+    "404 joke not found.",
+    "To understand recursion, you must first understand recursion."
+  ];
+  function showJoke() {
+    const box = document.getElementById("joke-box");
+    const joke = jokes[Math.floor(Math.random() * jokes.length)];
+    box.textContent = joke;
+  }
+  setInterval(showJoke, 4000);
+  showJoke();
+});
