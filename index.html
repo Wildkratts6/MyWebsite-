@@ -1,60 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Senumi's Test Site</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    /* FBI Warning and misc styles */
-    .hidden { display: none; }
-    .fbi-warning {
-      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-      background: rgba(0, 0, 0, 0.85); color: white; font-family: monospace;
-      font-size: 1.2rem; display: flex; justify-content: center; align-items: center;
-      text-align: center; padding: 20px; z-index: 9999;
-    }
-    .fbi-warning-content { max-width: 600px; }
-    @keyframes floatUp {
-      0% { transform: translateY(0); opacity: 1; }
-      100% { transform: translateY(-100px); opacity: 0; }
-    }
-    .hacker-mode {
-      background-color: black !important;
-      color: #00ff00 !important;
-      font-family: "Courier New", monospace;
-      transition: all 0.3s ease;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Cool Website</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <h1>Hello! I'm Senumi</h1>
 
-  <div id="fbiWarning" class="fbi-warning hidden">
-    <div class="fbi-warning-content">
-      <strong>FBI WARNING:</strong> Unauthorized access is prohibited. All activities are monitored. <br><br>
-      By continuing, you agree to have your browser cookies eaten by a mysterious cyber squirrel. Proceed at your own risk.
-    </div>
-  </div>
+  <button id="mysteryBtn">Press Me</button>
 
-  <h1 class="glow wiggle typewriter">✨ Welcome to My Test Site ✨</h1>
-  <p>This website was made by me with code! 😊<br>Hooray! I am very proud!</p>
+  <div id="joke-box">Loading a joke...</div>
+  <div id="emojis"></div>
 
-  <button id="mysteryBtn">Mysterious button</button>
-  <p>Click if you dare.......</p>
-
-  <p id="joke-box" class="glitch">Loading a joke...</p>
-
-  <audio id="bg-music" loop autoplay>
-    <source src="music.mp3" type="audio/mpeg" />
-    Your browser does not support audio.
-  </audio>
-
-  <canvas id="confetti-canvas"></canvas>
-
-  <div class="emoji-container" id="emojis"></div>
-
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
   <script src="script.js"></script>
-
 </body>
 </html>
